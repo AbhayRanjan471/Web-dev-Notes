@@ -132,3 +132,10 @@ Anyone can decode the payload (even without the secret). Only store non-sensitiv
 Use HTTPS:
 
 Always transmit JWTs over secure connections to prevent interception.
+
+syntex:
+jwt.sign(payload, secretOrPrivateKey, [options], [callback])
+
+ Why JWT_SECRET is Important
+The JWT_SECRET is used to sign the token to ensure its authenticity and integrity.
+Without it, the token cannot be validated during verification.
