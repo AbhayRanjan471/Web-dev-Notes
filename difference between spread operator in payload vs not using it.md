@@ -1,6 +1,6 @@
 ``` js 
 let payload = { formData };
----
+```
 
 ** It keeps formData as one whole object inside another object. The result looks like this:
 
