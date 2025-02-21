@@ -2,7 +2,7 @@
 let payload = { formData };
 ```
 
-**It keeps formData as one whole object inside another object. The result looks like this:
+* It keeps formData as one whole object inside another object. The result looks like this:
 
 ```json
 {
@@ -133,14 +133,14 @@ Will update only closingTotal, keeping other fields unchanged:
 }
 ```
 
-###Why It’s Used in State Updates:
-React state updates must be immutable, meaning we cannot directly modify the state.
-Instead, we create a new object using ...prev and update only the required field.
+### Why It’s Used in State Updates:
+* React state updates must be immutable, meaning we cannot directly modify the state.
+* Instead, we create a new object using ...prev and update only the required field.
 🔹 Key Differences
-Spread Operator Use	Purpose	Example Output
-let payload = { ...formData };	Creates a copy of formData and sends it in the API call	{ "openingTotal": 1000, "closingTotal": 500, "text": "Some text", "daysTotal": 200 }
-setFormData((prev) => ({ ...prev, [field]: value }))	Updates only one field in formData, while keeping others unchanged	{ "openingTotal": 1000, "closingTotal": 600, "text": "Some text", "daysTotal": 200 }
+* Spread Operator Use	Purpose	Example Output
+** let payload = { ...formData };	Creates a copy of formData and sends it in the API call	{ "openingTotal": 1000, "closingTotal": 500, "text": "Some text", "daysTotal": 200 }
+** setFormData((prev) => ({ ...prev, [field]: value }))	Updates only one field in formData, while keeping others unchanged	{ "openingTotal": 1000, "closingTotal": 600, "text": "Some text", "daysTotal": 200 }
 🔹 Summary
-API Call ({ ...formData }): Ensures the backend gets a properly structured object.
-State Update (...prev): Ensures React correctly updates only the changed field.
-Both use the spread operator (...), but in different contexts—one for copying objects, the other for updating state dynamically.
+* API Call ({ ...formData }): Ensures the backend gets a properly structured object.
+* State Update (...prev): Ensures React correctly updates only the changed field.
+* Both use the spread operator (...), but in different contexts—one for copying objects, the other for updating state dynamically.
