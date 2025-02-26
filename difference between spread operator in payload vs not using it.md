@@ -104,8 +104,8 @@ const handleCumulativeInputChange = (field, value) => {
 };
 ```
 ## What It Does:
-Preserves existing state (prev) while updating only the specified field dynamically.
-[field]: value updates a specific key inside formData, while ...prev ensures all other fields remain unchanged.
+* Preserves existing state (prev) while updating only the specified field dynamically.
+* [field]: value updates a specific key inside formData, while ...prev ensures all other fields remain unchanged.
 ✅ Example:
 If formData is initially:
 
