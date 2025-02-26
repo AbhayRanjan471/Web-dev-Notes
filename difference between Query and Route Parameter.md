@@ -1,8 +1,10 @@
-The Difference Between Query and Route Parameters in API Calls
+# The Difference Between Query and Route Parameters in API Calls
 
-1. Query Parameter (First URL)
+# 1. Query Parameter (First URL)
 
+```
 http://localhost:7009/api/finance/summary-of-daily-collection/getById?id=8c03a9a1-72f0-4d92-abf9-a9c981d703f3
+```
 
 Here, the id is passed as a query parameter using ?id=.
 This is typically used for optional parameters or when multiple parameters need to be passed.
