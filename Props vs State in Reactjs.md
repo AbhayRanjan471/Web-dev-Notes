@@ -4,7 +4,7 @@ DEV Community
 javascript
 ##When I was learning React, I found that understanding the difference between "props" and "state" can be a bit confusing for beginners. In this blog post, I want to share what I've learned in a way that's easy to grasp, with simple code examples, so that even beginners can begin to understand it.
 
-*Props: Passing Data from Parent to Child
+* Props: Passing Data from Parent to Child
 
 *Imagine a React component as a building block of your web application. Props (short for properties) are like the information or instructions you pass to each building block. They allow you to send data from a parent component to a child component. React's data flow between components is always uni-directional.
 
