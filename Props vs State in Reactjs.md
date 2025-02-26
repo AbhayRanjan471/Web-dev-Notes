@@ -52,7 +52,7 @@ function Counter() {
     </div>
   );
 }
-``
+```
 **In the example above, the Counter component uses the useState hook to manage its own state. The count variable is initialized to 0, and the setCount function is used to update the count variable when the button is clicked.
 
 #Differences Between Props and State
