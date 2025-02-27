@@ -63,3 +63,127 @@ function Counter() {
 *Mutability: Props are immutable, meaning they cannot be changed by the child component. State, on the other hand, can be changed using the setState function.
 *Usage: Props are used to pass data from parent to child components, while state is used to manage data that can change over time within a component.
 *In summary, props and state are both important concepts in React. Props are used to pass data from parent to child components, while state is used to manage data that can change over time within a component. Understanding the differences between props and state is crucial for building React applications.
+
+# How Parent and Child Components Share Props in React.js
+
+In React, props (short for properties) are used to pass data from a parent component to a child component. The data flows one-way (top-down) from the parent to the child.
+
+## 1️⃣ Passing Props from Parent to Child
+The parent component sends props to the child by defining them as attributes on the child component.
+
+### Example:
+```jsx
+// Parent Component
+import React from "react";
+import ChildComponent from "./ChildComponent";
+
+const ParentComponent = () => {
+  const message = "Hello from Parent!";
+
+  return <ChildComponent greeting={message} />;
+};
+
+export default ParentComponent;
+```
+
+```jsx
+// Child Component
+import React from "react";
+
+const ChildComponent = ({ greeting }) => {
+  return <h1>{greeting}</h1>;
+};
+
+export default ChildComponent;
+```
+
+### 🔹 How it works:
+- The parent passes `message` as a prop (`greeting={message}`).
+- The child receives `greeting` and displays it.
+
+---
+
+## 2️⃣ Passing Data from Child to Parent (Using Callback Functions)
+To send data from the child to the parent, the parent can pass a callback function as a prop. The child calls this function with the data it wants to send.
+
+### Example:
+```jsx
+// Parent Component
+import React, { useState } from "react";
+import ChildComponent from "./ChildComponent";
+
+const ParentComponent = () => {
+  const [childMessage, setChildMessage] = useState("");
+
+  const handleChildData = (data) => {
+    setChildMessage(data);
+  };
+
+  return (
+    <div>
+      <h1>Message from Child: {childMessage}</h1>
+      <ChildComponent sendDataToParent={handleChildData} />
+    </div>
+  );
+};
+
+export default ParentComponent;
+```
+
+```jsx
+// Child Component
+import React from "react";
+
+const ChildComponent = ({ sendDataToParent }) => {
+  const handleClick = () => {
+    sendDataToParent("Hello from Child!");
+  };
+
+  return <button onClick={handleClick}>Send Data to Parent</button>;
+};
+
+export default ChildComponent;
+```
+
+### 🔹 How it works:
+- The parent passes `handleChildData` as a prop (`sendDataToParent={handleChildData}`).
+- The child calls `sendDataToParent("Hello from Child!")`, sending data back.
+- The parent updates `childMessage` and displays it.
+
+---
+
+## 3️⃣ Using Context API for Deeply Nested Components
+If props need to be passed to deeply nested components, Context API can be used instead of prop drilling.
+
+### Example:
+```jsx
+import React, { createContext, useContext } from "react";
+
+// Create a Context
+const MessageContext = createContext();
+
+const ParentComponent = () => {
+  return (
+    <MessageContext.Provider value="Hello from Context!">
+      <ChildComponent />
+    </MessageContext.Provider>
+  );
+};
+
+const ChildComponent = () => {
+  const message = useContext(MessageContext); // Access context value
+  return <h1>{message}</h1>;
+};
+
+export default ParentComponent;
+```
+
+### 🔹 How it works:
+- `MessageContext.Provider` shares `value="Hello from Context!"` with all child components.
+- `useContext(MessageContext)` allows the child to consume the value without prop drilling.
+
+---
+
+By using props, callback functions, or the Context API, React enables efficient data flow between components. 🎉
+
+
