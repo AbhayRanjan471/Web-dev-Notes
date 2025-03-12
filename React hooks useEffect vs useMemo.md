@@ -56,7 +56,7 @@ Common Uses	- Avoid redoing heavy calculations
 - Set up listeners
 - Timers
 Can cause render?	No (just returns cached value)	Yes (if you update state inside useEffect)
-🎨 Easy to Visualize
+🎨 Easy to Visualize:
 Imagine React like this:
 
 diff
@@ -107,18 +107,18 @@ Empty dependency [] means it only runs once, like componentDidMount.
 ➡️ Use useMemo when:
 You need to calculate a value, and you want to cache it to prevent redoing it on every render.
 Example:
-Filtering or mapping a large array.
-Doing math that’s slow.
-Memoizing derived values.
+Filtering or mapping a large array
+Doing math that’s slow
+Memoizing derived values
 ➡️ Use useEffect when:
 You need to do something after React renders, like:
-Fetch data from an API.
-Set event listeners (window resize, etc.).
-Manipulate DOM directly.
-Set up timers or intervals.
+Fetch data from an API
+Set event listeners (window resize, etc.)
+Manipulate DOM directly
+Set up timers or intervals
 ✅ The Why Behind It
-useMemo helps with performance optimization inside React’s render cycle.
-useEffect helps you do side-jobs outside React’s render cycle.
+useMemo helps with performance optimization inside React’s render cycle
+useEffect helps you do side-jobs outside React’s render cycle
 ✅ Real-Life Analogy
 Imagine you’re cooking 🍳.
 
