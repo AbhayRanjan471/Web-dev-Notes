@@ -1,5 +1,6 @@
 ✅ useMemo vs useEffect (Simplified Explanation)
-🔨 Hook	💡 Purpose
+🔨 Hook | 💡 Purpose
+Hook	Purpose
 useMemo	Memoizes (caches) a computed value to avoid redoing expensive calculations on every render.
 useEffect	Runs side-effects (code that happens outside React, like fetching data, updating DOM, etc.) after rendering.
 🎯 1. What is useMemo?
@@ -17,6 +18,7 @@ const result = useMemo(() => {
   return slowFunction(someInput);
 }, [someInput]);
 👉 useMemo will:
+
 Run the function on first render.
 Run again only if someInput changes.
 Otherwise, return the last cached result instantly.
@@ -25,11 +27,13 @@ Otherwise, return the last cached result instantly.
 Think of it as:
 
 "React finished rendering the screen. Now I can do extra stuff!"
+
 Good for things like:
-fetching data
-listening to events
-manipulating the DOM
-setting timers, etc.
+
+Fetching data
+Listening to events
+Manipulating the DOM
+Setting timers, etc.
 jsx
 Copy
 Edit
@@ -38,6 +42,7 @@ useEffect(() => {
   fetch("/api/data").then((response) => response.json());
 }, []);
 👉 useEffect will:
+
 Run after the component is rendered to the screen.
 Run again if its dependencies change.
 ✅ The Big Differences
@@ -51,7 +56,7 @@ Common Uses	- Avoid redoing heavy calculations
 - Set up listeners
 - Timers
 Can cause render?	No (just returns cached value)	Yes (if you update state inside useEffect)
-🎨 Easy to Visualize:
+🎨 Easy to Visualize
 Imagine React like this:
 
 diff
@@ -68,7 +73,7 @@ Post-render phase:
 - useEffect runs
 - Browser updates finish
 ✅ 🔥 Beginner Examples
-✅ Example of useMemo:
+✅ Example of useMemo
 Let's say you have a big array and need to filter it.
 
 jsx
@@ -79,11 +84,9 @@ const expensiveFilteredList = useMemo(() => {
 }, [bigArray]);
 Without useMemo:
 This .filter() happens on every render, even if bigArray didn’t change.
-
 With useMemo:
 React only recalculates when bigArray changes → saving time!
-
-✅ Example of useEffect:
+✅ Example of useEffect
 You want to fetch data when the page loads.
 
 jsx
@@ -113,16 +116,16 @@ Fetch data from an API.
 Set event listeners (window resize, etc.).
 Manipulate DOM directly.
 Set up timers or intervals.
-✅ The Why Behind It:
+✅ The Why Behind It
 useMemo helps with performance optimization inside React’s render cycle.
 useEffect helps you do side-jobs outside React’s render cycle.
-✅ Real-Life Analogy:
+✅ Real-Life Analogy
 Imagine you’re cooking 🍳.
 
 Situation	What You Do	React Hook
 You cut vegetables once and reuse them unless you run out.	Memoize! Don’t redo work unless needed.	useMemo
 You turn on the oven only after the prep work is done.	You act after finishing something.	useEffect
-✅ TL;DR Summary:
+✅ TL;DR Summary
 useMemo	useEffect
 Caches/computes a value.	Runs code after rendering.
 Runs during render, inside React.	Runs after React renders to the DOM.
