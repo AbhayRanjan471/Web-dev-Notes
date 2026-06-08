@@ -20,3 +20,9 @@ Is phase mein code ko strictly line-by-line top to bottom execute kiya jata hai.
 
 💻 Execution Context Breakdown Simulation
 Agar hamare paas yeh code hai:
+var n = 2;
+function square(num) {
+   var ans = num * num;
+   return ans;
+}
+var square2 = square(n);
