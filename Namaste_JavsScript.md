@@ -24,6 +24,7 @@ Is phase mein code ko strictly **line-by-line** top to bottom execute kiya jata 
 ### 💻 Execution Context Breakdown Simulation
 
 Agar hamare paas yeh code hai:
+Jab line 6 par square(n) call hoga, toh JS engine main Global Context ke andar ek naya Local Execution Context banayega:PhaseComponentKeyValuePhase 1MemorynumundefinedPhase 1MemoryansundefinedPhase 2Codenum2 (Argument passed)Phase 2Codeans4 (2 * 2)⚠️ Important: Jaise hi engine return ans; line par pahunchega, yeh value parent execution context ko hand-over kar di jayegi aur yeh local context Call Stack se permanently destroy ho jayega.📌 EPISODE 3: Hoisting in JavaScriptHoisting JavaScript ka ek aisa phenomena hai jisse aap variables aur functions ko unke declaration se pehle hi bina kisi generic crash error ke access kar sakte hain.
 
 ```javascript
 var n = 2;
